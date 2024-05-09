@@ -57,8 +57,7 @@ const cookieOptions = {
 // in development server secure will false .  in production secure will be true
 ```
 
-## now we can use this object for cookie option to modify cookies
-
+## Verifyed Token with Middleware 
 ```js
 //verifyed Token
 // Middleware
@@ -81,6 +80,10 @@ const verifyToken = (req, res, next) => {
     next();
   });
 };
+```
+
+##  now we can use this object for cookie option to modify cookies
+```js
 
 //creating Token
 app.post("/jwt", logger, async (req, res) => {
