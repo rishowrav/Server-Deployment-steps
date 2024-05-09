@@ -60,6 +60,28 @@ const cookieOptions = {
 ## now we can use this object for cookie option to modify cookies
 
 ```js
+//verifyed Token
+// Middleware
+const verifyToken = (req, res, next) => {
+  const token = req?.cookies?.token;
+  //   console.log("token in the middleware", token);
+
+  if (!token) {
+    return res
+      .status(401)
+      .send({ message: "unauthorized access token pai nai re vai" });
+  }
+  jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, decoded) => {
+    if (err) {
+      return res
+        .status(401)
+        .send({ message: "unauthorized access token valid na re vai" });
+    }
+    req.user = decoded;
+    next();
+  });
+};
+
 //creating Token
 app.post("/jwt", logger, async (req, res) => {
   const user = req.body;
