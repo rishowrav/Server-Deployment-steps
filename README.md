@@ -81,6 +81,32 @@ const verifyToken = (req, res, next) => {
   });
 };
 ```
+##   get token form server using email
+```js
+
+    // get token form server using email
+    axios
+      .post("http://localhost:3000/jwt", { email }, { withCredentials: true })
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+```
+
+
+##  remove token from browser cookies
+```js
+
+    // remove token from browser cookies
+    axios("http://localhost:3000/logout", { withCredentials: true }).then(
+      (res) => {
+        console.log(res.data);
+      }
+    );
+```
 
 ##  now we can use this object for cookie option to modify cookies
 ```js
